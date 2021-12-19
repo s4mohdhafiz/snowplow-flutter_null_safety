@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 
 class Snowplow {
   static const MethodChannel _channel =
-      const MethodChannel('com.suamusica.br/snowplow');
+      const MethodChannel('com.wogaaflutter.snowplow/snowplow');
 
   Future<bool> setUserId(String userId) async {
     try {

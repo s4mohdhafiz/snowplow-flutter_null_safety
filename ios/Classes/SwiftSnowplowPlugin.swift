@@ -11,8 +11,8 @@ public class SwiftSnowplowPlugin: NSObject, FlutterPlugin {
     public static func register(with registrar: FlutterPluginRegistrar) {
         SwiftSnowplowPlugin.synced(self) {
             if SwiftSnowplowPlugin.channel == nil {
-                SwiftSnowplowPlugin.channel = FlutterMethodChannel(name: "com.suamusica.br/snowplow", binaryMessenger: registrar.messenger())
-                SwiftSnowplowPlugin.tracker = SnowplowTrackerBuilder().getTracker("snowplow.suamusica.com.br")
+                SwiftSnowplowPlugin.channel = FlutterMethodChannel(name: "com.wogaaflutter.snowplow/snowplow", binaryMessenger: registrar.messenger())
+                SwiftSnowplowPlugin.tracker = SnowplowTrackerBuilder().getTracker("snowplow.dcube.cloud")
                 let instance = SwiftSnowplowPlugin(channel: SwiftSnowplowPlugin.channel!)
                 registrar.addMethodCallDelegate(instance, channel: SwiftSnowplowPlugin.channel!)
             }

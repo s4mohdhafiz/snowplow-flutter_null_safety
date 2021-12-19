@@ -1,4 +1,4 @@
-package com.suamusica.snowplow_example;
+package com.wogaaflutter.snowplow_example;
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity;

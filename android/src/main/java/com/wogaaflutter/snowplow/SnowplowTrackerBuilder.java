@@ -1,5 +1,5 @@
 
-package com.suamusica.snowplow;
+package com.wogaaflutter.snowplow;
 
 import com.snowplowanalytics.snowplow.configuration.*;
 import com.snowplowanalytics.snowplow.controller.*;
@@ -13,11 +13,13 @@ import android.content.Context;
 import java.util.concurrent.TimeUnit;
 
 public class SnowplowTrackerBuilder {
-    public static final String HTTPS_SNOWPLOW_COLLECTOR_URL_COM = "https://snowplow.suamusica.com.br";
+    public static final String HTTPS_SNOWPLOW_COLLECTOR_URL_COM = "https://snowplow.dcube.cloud";
 
     public static TrackerController getTracker(Context context) {
+        String appId = context.getPackageName();
+            
         NetworkConfiguration networkConfig = new NetworkConfiguration(HTTPS_SNOWPLOW_COLLECTOR_URL_COM, HttpMethod.POST);
-        TrackerConfiguration trackerConfig = new TrackerConfiguration("1")
+        TrackerConfiguration trackerConfig = new TrackerConfiguration(appId)
                 .base64encoding(true)
                 .sessionContext(true)
                 .platformContext(true)

@@ -1,4 +1,4 @@
-package com.suamusica.snowplow;
+package com.wogaaflutter.snowplow;
 
 import android.content.Context;
 import android.util.Log;
@@ -29,7 +29,7 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
  * SnowplowPlugin
  */
 public class SnowplowPlugin implements FlutterPlugin, MethodCallHandler {
-    private static final String CHANNEL_NAME = "com.suamusica.br/snowplow";
+    private static final String CHANNEL_NAME = "com.wogaaflutter.snowplow/snowplow";
     private MethodChannel channel;
     private TrackerController tracker;
     private Context applicationContext;
