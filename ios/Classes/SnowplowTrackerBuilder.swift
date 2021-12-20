@@ -3,7 +3,6 @@ import SnowplowTracker
 
 class SnowplowTrackerBuilder: NSObject, RequestCallback {
     let kNamespace = "sm"
-    let kAppId     = "1"
     
     func getTracker(_ url: String) -> TrackerController {
         var configurations : [Configuration] = []
@@ -13,7 +12,6 @@ class SnowplowTrackerBuilder: NSObject, RequestCallback {
         configurations.append(networkConfig)
         
         let trackerConfiguration = TrackerConfiguration()
-            .appId(kAppId)
             .base64Encoding(true)
             .sessionContext(true)
             .platformContext(true)

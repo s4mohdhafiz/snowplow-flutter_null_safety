@@ -35,7 +35,7 @@ public class SnowplowTrackerBuilder {
                 new TimeMeasure(30, TimeUnit.SECONDS)
         );
 
-        SubjectConfiguration subjectConfiguration = new SubjectConfiguration().userId("0");
+        SubjectConfiguration subjectConfiguration = new SubjectConfiguration().useragent(System.getProperty("http.agent"));
 
         return Snowplow.createTracker(context,
                 "sm",
