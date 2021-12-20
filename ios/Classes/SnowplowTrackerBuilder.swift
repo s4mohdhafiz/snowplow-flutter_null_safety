@@ -2,7 +2,7 @@ import Foundation
 import SnowplowTracker
 
 class SnowplowTrackerBuilder: NSObject, RequestCallback {
-    let kNamespace = "sm"
+    let kNamespace = "WogaaTracker"
     
     func getTracker(_ url: String) -> TrackerController {
         var configurations : [Configuration] = []
@@ -29,12 +29,15 @@ class SnowplowTrackerBuilder: NSObject, RequestCallback {
         
         configurations.append(emitterConfiguration)
     
+        let sessionConfiguration = SessionConfiguration()
         if #available(iOS 10, *) {
-            let sessionConfiguration = SessionConfiguration(foregroundTimeout: Measurement(value: 30, unit: .seconds), backgroundTimeout: Measurement(value: 30, unit: .seconds))
-            configurations.append(sessionConfiguration)
+            sessionConfiguration.foregroundTimeout = Measurement(value: 10, unit: .minutes)
+            sessionConfiguration.backgroundTimeout = Measurement(value: 5, unit: .minutes)
         } else {
             // Fallback on earlier versions
         }
+
+        configurations.append(sessionConfiguration)
         
         let subjectConfiguration = SubjectConfiguration()
         
