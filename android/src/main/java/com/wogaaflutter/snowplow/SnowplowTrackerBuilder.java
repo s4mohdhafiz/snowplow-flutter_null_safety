@@ -38,7 +38,7 @@ public class SnowplowTrackerBuilder {
         SubjectConfiguration subjectConfiguration = new SubjectConfiguration().useragent(System.getProperty("http.agent"));
 
         return Snowplow.createTracker(context,
-                "sm",
+                "WogaaTracker",
                 networkConfig,
                 trackerConfig,
                 sessionConfig,

@@ -48,6 +48,9 @@ public class SnowplowPlugin implements FlutterPlugin, MethodCallHandler {
     @Override
     public void onMethodCall(MethodCall methodCall, final MethodChannel.Result result) {
         switch (methodCall.method) {
+            case "start":
+                final String url = methodCall.argument("url");
+                break
             case "trackPageview":
                 final String screenName = methodCall.argument("screenName");
                 trackPageView(result, screenName);

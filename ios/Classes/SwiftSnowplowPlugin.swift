@@ -12,7 +12,6 @@ public class SwiftSnowplowPlugin: NSObject, FlutterPlugin {
         SwiftSnowplowPlugin.synced(self) {
             if SwiftSnowplowPlugin.channel == nil {
                 SwiftSnowplowPlugin.channel = FlutterMethodChannel(name: "com.wogaaflutter.snowplow/snowplow", binaryMessenger: registrar.messenger())
-                SwiftSnowplowPlugin.tracker = SnowplowTrackerBuilder().getTracker("snowplow.dcube.cloud")
                 let instance = SwiftSnowplowPlugin(channel: SwiftSnowplowPlugin.channel!)
                 registrar.addMethodCallDelegate(instance, channel: SwiftSnowplowPlugin.channel!)
             }
@@ -26,6 +25,11 @@ public class SwiftSnowplowPlugin: NSObject, FlutterPlugin {
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         let args = call.arguments as! [String: Any]
         switch call.method {
+        case "start":
+            if SwiftSnowplowPlugin.tracker == nil {
+                let url = args["url"] as! String;
+                SwiftSnowplowPlugin.tracker = SnowplowTrackerBuilder().getTracker(url)
+            }
         case "trackPageview":
             let screenName = args["screenName"] as! String;
             trackPageview(result: result, screenName);

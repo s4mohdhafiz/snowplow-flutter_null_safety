@@ -6,6 +6,18 @@ class Snowplow {
   static const MethodChannel _channel =
       const MethodChannel('com.wogaaflutter.snowplow/snowplow');
 
+  Future<bool> start(String url) async {
+    try {
+      Map<String, String> args = <String, String>{
+        'url': url,
+      };
+      return await _channel.invokeMethod<bool?>('start', args) ?? false;
+    } on PlatformException catch (e) {
+      print("Failed ${e.message}");
+      return Future.value(false);
+    }
+  }
+
   Future<bool> setUserId(String userId) async {
     try {
       Map<String, String> args = <String, String>{
